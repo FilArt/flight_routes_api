@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+gunicorn
+ipython
+databases[asyncpg]
+pydantic
+pydantic-settings
+geoalchemy2
+geopy
+
+pytest
+httpx
+pytest-asyncio
+psycopg2-binary
