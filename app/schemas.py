@@ -53,14 +53,6 @@ class FlightRoute(BaseModel):
     fpl: list[str]
 
 
-class MostUsedRoute(FlightRoute):
-    usage_count: int
-
-
-class MostEfficientRoute(FlightRoute):
-    score: float
-
-
 class AlternativeRoute(FlightRoute):
     fuel_savings: float
     time_savings: str

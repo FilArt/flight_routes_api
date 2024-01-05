@@ -9,7 +9,7 @@ from fastapi.exceptions import HTTPException
 from app.deps import get_db
 
 from .models import flights, waypoints
-from .schemas import Edge, Flight, FlightCreate, FlightRoute, MostUsedRoute, Node
+from .schemas import Edge, Flight, FlightCreate, Node
 
 
 class FlightService:
@@ -30,7 +30,7 @@ class FlightService:
         aircraft_id=None,
         start_date=None,
         end_date=None,
-    ) -> MostUsedRoute:
+    ):
         where, values = self._get_where(
             departure,
             arrival,

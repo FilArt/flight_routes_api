@@ -6,8 +6,7 @@ from .schemas import (
     AlternativeRoute,
     Flight,
     FlightCreate,
-    MostEfficientRoute,
-    MostUsedRoute,
+    FlightRoute
 )
 from .services import FlightService
 
@@ -22,14 +21,14 @@ async def create_flight(
     return await service.create_flight(flight)
 
 
-@router.get("/flights/most_used", response_model=MostUsedRoute)
+@router.get("/flights/most_used", response_model=FlightRoute, description="Get most used flight route for given parameters")
 async def get_most_used_flight_route(
     departure: int,
     arrival: int,
-    airline_id: int | None = None,
-    aircraft_id: int | None = None,
-    start_date: datetime | None = Query(None),
-    end_date: datetime | None = Query(None),
+    airline_id: int = None,
+    aircraft_id: int = None,
+    start_date: datetime = Query(None),
+    end_date: datetime = Query(None),
     service: FlightService = Depends(FlightService),
 ):
     return await service.get_most_used_route(
@@ -42,7 +41,7 @@ async def get_most_used_flight_route(
     )
 
 
-@router.get("/flights/most_efficient", response_model=MostEfficientRoute)
+@router.get("/flights/most_efficient", response_model=FlightRoute)
 async def get_most_efficient_flight_route(
     departure: int,
     arrival: int,

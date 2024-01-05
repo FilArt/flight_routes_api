@@ -158,7 +158,6 @@ async def test_get_most_used_flight_routes(
 
     assert response.status_code == 200
     assert result["fpl"] == ["dep", "wp", "arr"]
-    assert result["usage_count"] == 2
 
 
 @pytest.mark.parametrize(
